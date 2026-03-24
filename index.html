@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashutosh Yadav - Full Stack Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!--box icons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    
+    
+</head>
+<body>
+
+
+    <!--header design-->
+    <!-- Logo and Menu Icon -->
+<header class="header">
+    <a href="#" class="logo">Ashutosh.</a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+
+    <!--Home section-->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Hi , I Am <span>ASHUTOSH YADAV</span></h1>
+            <div class="text-animate">
+                <h3><span id="rotate-text">Full Stack Developer</span></h3>
+            </div>
+            
+            <p>A passionate Full Stack Developer with expertise in building secure and scalable web applications. Skilled in MERN stack development with a strong foundation in problem-solving and project management. Committed to creating efficient, user-centric digital solutions.</p>
+
+
+            <div class="btn-box">
+                <a href="#" class="btn">Hire Me</a>
+                <a href="#" class="btn">Let's Talk</a>
+            </div>
+        </div>
+        <div class="home-sci">
+            <a href="https://github.com/Ashutosh2705Yadav" target="_blank" class="bx bxl-github"></a>
+            <a href="http://www.linkedin.com/in/ashutosh-yadav27/" target="_blank" class="bx bxl-linkedin"></a>
+            <a href="mailto:ashutosh27052003@gmail.com" class="bx bx-envelope"></a>
+        </div>
+    <div class="pic">
+        
+    </div>
+    </section>
+
+
+    <section class="projects" id="projects">
+    <h2 class="heading">My <span>Projects</span></h2>
+    
+    <!-- Featured Projects with Videos -->
+    <div class="featured-projects">
+        <!-- Project 1: Exam Anti-Impersonation System -->
+        <div class="featured-project">
+            <div class="project-content">
+                <h3 class="project-title">Exam Anti-Impersonation System</h3>
+                <p class="project-description">
+                    A secure, robust web-based examination platform designed to prevent impersonation through advanced authentication mechanisms, real-time activity monitoring, and AI-powered proctoring. This system ensures exam integrity by tracking user behavior, detecting suspicious activities, and maintaining detailed audit logs.
+                </p>
+                <div class="project-highlights">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Biometric Authentication & Face Recognition</li>
+                        <li>Real-time Browser & Activity Monitoring</li>
+                        <li>Automated Proctoring System</li>
+                        <li>Secure Question Bank Management</li>
+                        <li>Detailed Analytics & Reports</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-badge"><i class='bx bxl-nodejs'></i> Node.js</span>
+                    <span class="tech-badge"><i class='bx bxl-react'></i> React.js</span>
+                    <span class="tech-badge"><i class='bx bx-data'></i> PostgreSQL</span>
+                    <span class="tech-badge"><i class='bx bx-security'></i> Security</span>
+                </div>
+            </div>
+            <div class="project-video">
+                <iframe width="100%" height="360" src="https://www.youtube.com/embed/_qYbN3N5bXo" title="Exam Anti-Impersonation System" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Project 2: Chalo Seekhein -->
+        <div class="featured-project">
+            <div class="project-content">
+                <h3 class="project-title">Chalo Seekhein - E-Learning Platform</h3>
+                <p class="project-description">
+                    A comprehensive, full-featured e-learning platform that revolutionizes online education by providing a seamless learning experience. The platform enables instructors to create and manage courses, students to enroll and track progress, and administrators to oversee the entire ecosystem with powerful analytics.
+                </p>
+                <div class="project-highlights">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>User Authentication & Role-Based Access</li>
+                        <li>Course Creation & Management System</li>
+                        <li>Video Lectures & Learning Materials</li>
+                        <li>Quiz & Assessment Module</li>
+                        <li>Progress Tracking & Certificates</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-badge"><i class='bx bxl-php'></i> PHP</span>
+                    <span class="tech-badge"><i class='bx bx-data'></i> MySQL</span>
+                    <span class="tech-badge"><i class='bx bxl-html5'></i> HTML</span>
+                    <span class="tech-badge"><i class='bx bxl-css3'></i> CSS</span>
+                    <span class="tech-badge"><i class='bx bxl-javascript'></i> JavaScript</span>
+                </div>
+            </div>
+            <div class="project-video">
+                <iframe width="100%" height="360" src="https://www.youtube.com/embed/QYgr_p_AXRA" title="Chalo Seekhein E-Learning Platform" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Projects (Hidden by Default) -->
+    <div class="additional-projects hidden" id="additionalProjects">
+        <div class="additional-project">
+            <h3 class="project-title">College Confessions</h3>
+            <p class="project-description">
+                A safe, anonymous platform designed for college students to share their experiences, challenges, and stories without fear of judgment. The platform creates a supportive community where students can connect through genuine, anonymous confessions and provide mutual support to one another.
+            </p>
+            <div class="project-highlights">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Anonymous Post Creation & Sharing</li>
+                    <li>Real-time Like & Vote System</li>
+                    <li>Comment & Reply Threading</li>
+                    <li>Category & Tag-based Organization</li>
+                    <li>Content Moderation & Safety Filters</li>
+                    <li>User Notifications & Engagement Metrics</li>
+                </ul>
+            </div>
+            <div class="tech-stack">
+                <span class="tech-badge"><i class='bx bxl-react'></i> Next.js</span>
+                <span class="tech-badge"><i class='bx bx-data'></i> MongoDB</span>
+                <span class="tech-badge"><i class='bx bxl-nodejs'></i> Node.js</span>
+                <span class="tech-badge"><i class='bx bxl-javascript'></i> JavaScript</span>
+            </div>
+        </div>
+
+        <div class="additional-project">
+            <h3 class="project-title">BikeNest</h3>
+            <p class="project-description">
+                A full-stack bike rental platform that revolutionizes the sharing economy for cyclists. BikeNest enables users to browse available bikes, make seamless bookings, manage their rentals, and enjoy a convenient micro-mobility solution with real-time tracking and secure payment integration.
+            </p>
+            <div class="project-highlights">
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Real-time Bike Availability & Inventory Management</li>
+                    <li>Secure Booking & Reservation System</li>
+                    <li>GPS Tracking & Location Services</li>
+                    <li>Payment Gateway Integration</li>
+                    <li>User Ratings & Review System</li>
+                    <li>Rental History & Receipt Management</li>
+                </ul>
+            </div>
+            <div class="tech-stack">
+                <span class="tech-badge"><i class='bx bxl-nodejs'></i> Node.js</span>
+                <span class="tech-badge"><i class='bx bxl-react'></i> React.js</span>
+                <span class="tech-badge"><i class='bx bx-data'></i> PostgreSQL</span>
+                <span class="tech-badge"><i class='bx bx-mobile'></i> Responsive Design</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="view-more">
+        <button class="btn" id="viewMoreBtn" onclick="toggleAdditionalProjects()">View More Projects <i class='bx bx-chevron-right'></i></button>
+    </div>
+</section>
+
+
+
+    <section class="about" id="about">
+        <h2 class="heading">About <span>Me</span></h2>
+
+        <div class="about-container">
+            <div class="about-img">
+                <img src="ashutosh.jpeg" alt="Ashutosh Yadav">
+                <div class="img-overlay"></div>
+            </div>
+
+            <div class="about-content">
+                <h3 class="title">Full Stack Developer | MERN Stack Specialist</h3>
+                <p class="description">
+                    I'm a dedicated Full Stack Developer with expertise in building secure and scalable web applications. With strong problem-solving skills and experience in project management, I transform ideas into efficient digital solutions using cutting-edge technologies.
+                </p>
+                
+                <div class="skills-container">
+                    <div class="skill-item" data-skill="Node.js">
+                        <i class="bx bxl-nodejs"></i>
+                    </div>
+                    <div class="skill-item" data-skill="React">
+                        <i class="bx bxl-react"></i>
+                    </div>
+                    <div class="skill-item" data-skill="MongoDB">
+                        <i class="bx bx-data"></i>
+                    </div>
+                    <div class="skill-item" data-skill="PostgreSQL">
+                        <i class="bx bx-server"></i>
+                    </div>
+                    <div class="skill-item" data-skill="JavaScript">
+                        <i class="bx bxl-javascript"></i>
+                    </div>
+                    <div class="skill-item" data-skill="Python">
+                        <i class="bx bxl-python"></i>
+                    </div>
+                </div>
+
+                <p class="philosophy">
+                    "Building secure, scalable solutions that make a real impact."
+                </p>
+
+                <div class="btn-container">
+                    <a href="#" class="btn contact-btn">
+                        <i class="bx bx-envelope"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--education details-->
+    <section class="education" id="education">
+        <h2 class="heading">my <span>Journey</span></h2>
+
+        <div class="education-row">
+            <div class="education-column">
+                <h3 class="title">Education</h3>
+
+                <div class="education-box">
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calender"></i>2023 - Present</div>
+                            <h3>Bachelor of Technology - Lovely Professional University</h3>
+                            <p>Computer Science and Engineering
+                                <br>CGPA: 7.88
+                                <br>Expected Graduation: 2027
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calender"></i>2022 - 2023</div>
+                            <h3>Intermediate - L.A.S.E.A Jhalawar</h3>
+                            <p>PCM (Physics, Chemistry, Mathematics)
+                                <br>Percentage: 74.2%
+                                <br>Year of Passing: 2023
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calender"></i>2020 - 2021</div>
+                            <h3>Matriculation - Kendriya Vidyalaya Sanghaan</h3>
+                            <p>
+                                Lokra, Assam
+                                <br>Percentage: 86.2%
+                                <br>Year of Passing: 2021
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="education-column">
+                <h3 class="title">Training & Experience</h3>
+
+                <div class="education-box">
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calender"></i>Jun 2025 - Jul 2025</div>
+                            <h3>Full Stack Web Development - Cipher Schools</h3>
+                            <p>
+                                Completed intensive training in MERN Stack development. Built end-to-end web applications with RESTful APIs, user authentication, and CRUD operations. Gained hands-on experience in frontend-backend integration, database schema design, and deploying MERN applications.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calender"></i>Projects</div>
+                            <h3>Full Stack Developer</h3>
+                            <p>
+                                Developed multiple full-stack applications including Exam Anti-Impersonation System, E-Learning Platform, and Bike Rental System. Proficient in MongoDB, Express.js, React.js, Node.js, PostgreSQL, PHP, and MySQL with strong problem-solving and project management skills.
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--skill section design-->
+<section class="skills" id="skills">
+    <h2 class="heading">My <span>Skills</span></h2>
+
+    <div class="skills-row">
+        <div class="skills-column">
+            <h3 class="title">Technical Skills</h3>
+
+            <div class="skills-box">
+                <div class="skills-content">
+                    <div class="skill-badge">
+                        <h3>JavaScript</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>C++ / Java</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Python</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Node.js</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>React.js</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>MongoDB</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>PostgreSQL / MySQL</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Express.js</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>PHP</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>AWS</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills-column">
+            <h3 class="title">Soft Skills</h3>
+
+            <div class="skills-box">
+                <div class="skills-content">
+                    <div class="skill-badge">
+                        <h3>Problem Solving</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Communication</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Team Collaboration</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Project Management</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Leadership</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Critical Thinking</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Attention to Detail</h3>
+                    </div>
+
+                    <div class="skill-badge">
+                        <h3>Adaptability</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--contact form-->
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me!</span></h2>
+    <div class="contactform">
+        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+            <input type="hidden" name="access_key" value="33894473-ad86-4416-a997-c1893ff8082b">
+            
+            <!-- Name and Email Fields -->
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <span class="focus"></span>
+                </div>
+                <div class="input-field">
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <span class="focus"></span>
+                </div>
+            </div>
+
+            <!-- Phone and Subject Fields -->
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="number" name="phone" placeholder="Phone Number" required maxlength="10" minlength="10">
+                    <span class="focus"></span>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="subject" placeholder="Email Subject" required>
+                    <span class="focus"></span>
+                </div>
+            </div>
+
+            <!-- Message Field -->
+            <div class="textarea-field">
+                <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="btn-box btns">
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="thankYouPopup" class="popup">
+        <div class="popup-content">
+            <h2>Thank You!</h2>
+            <p>Your message has been submitted successfully. We will get back to you shortly!</p>
+            <button class="btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2 class="logo-text">Ashutosh<span>.</span></h2>
+                <p>
+                    Passionate Full Stack Developer with expertise in MERN stack and database management. Building secure, scalable web applications that make a real impact.
+                </p>
+                <div class="contact">
+                    <span><i class='bx bx-phone'></i> &nbsp; +91 9877467367</span>
+                    <span><i class='bx bx-envelope'></i> &nbsp; ashutosh27052003@gmail.com</span>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h2>Follow Me</h2>
+                <div class="social-icons">
+                    <a href="https://github.com/Ashutosh2705Yadav" target="_blank"><i class='bx bxl-github'></i></a>
+                    <a href="http://www.linkedin.com/in/ashutosh-yadav27/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="mailto:ashutosh27052003@gmail.com"><i class='bx bx-envelope'></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Ashutosh Yadav | All rights reserved
+        </div>
+    </footer>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
