@@ -604,5 +604,26 @@
     
 
     <script src="script.js"></script>
+
+    <!-- AI Chatbot Widget -->
+    <div id="portfolioChatWidget" class="chat-widget closed">
+        <button id="chatToggleBtn" class="chat-toggle" aria-label="Open chat">
+            <i class='bx bx-chat'></i>
+            <span>Ask Ashutosh</span>
+        </button>
+
+        <div class="chat-panel">
+            <div class="chat-header">
+                <h3>Portfolio Assistant</h3>
+                <button id="chatCloseBtn" class="chat-close" aria-label="Close chat">×</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <form id="chatForm" class="chat-form">
+                <input type="text" id="chatInput" placeholder="Ask about projects, skills or experience..." autocomplete="off" required />
+                <button type="submit" class="chat-submit">Send</button>
+            </form>
+            <div id="chatStatus" class="chat-status">Type a question and press Send.</div>
+        </div>
+    </div>
 </body>
 </html>

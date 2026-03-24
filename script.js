@@ -259,6 +259,90 @@ const roles = ['Full Stack Developer', 'MERN Stack Developer', 'Backend Develope
 let index = 0;
 const rotateText = document.getElementById('rotate-text');
 
+// Chatbot widget behavior (initialize after DOM is ready)
+document.addEventListener('DOMContentLoaded', () => {
+    const chatWidget = document.getElementById('portfolioChatWidget');
+    const chatToggleBtn = document.getElementById('chatToggleBtn');
+    const chatCloseBtn = document.getElementById('chatCloseBtn');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatStatus = document.getElementById('chatStatus');
+
+    if (!chatWidget || !chatToggleBtn || !chatCloseBtn || !chatForm || !chatInput || !chatMessages || !chatStatus) {
+        console.warn('Chatbot widget elements not found in DOM.');
+        return;
+    }
+
+    chatToggleBtn.addEventListener('click', () => {
+        chatWidget.classList.toggle('open');
+        if (chatWidget.classList.contains('open')) {
+            chatStatus.textContent = 'Ask me anything about my projects, skills, experience...';
+        chatInput.focus();
+    }
+});
+
+chatCloseBtn.addEventListener('click', () => {
+    chatWidget.classList.remove('open');
+});
+
+const appendMessage = (message, type) => {
+    const bubble = document.createElement('div');
+    bubble.classList.add('chat-bubble', type);
+    bubble.textContent = message;
+    chatMessages.appendChild(bubble);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+};
+
+const KNOWLEDGE_BASE = `
+About Ashutosh: Full Stack Developer with MERN focus, strong in backend and frontend, experienced in secure web systems.
+Project 1: Exam Anti-Impersonation System - real-time identity validation, analytics, security.
+Project 2: Chalo Seekhein - e-learning platform with role-based access, content management, analytics.
+Other: BikeNest, College Confessions, etc.
+Skills: JavaScript, React, Node, Express, MongoDB, PostgreSQL, Git, Docker, AWS, AWS, C/C++, Kotlin, PHP, Laravel, Next.js.
+Soft: Problem Solving, Communication, Teamwork, Leadership.
+`; 
+
+async function getChatBotReply(userMsg) {
+    appendMessage(userMsg, 'user');
+    chatStatus.textContent = 'Thinking...';
+
+    // Simulate API delay
+    setTimeout(() => {
+        let response = '';
+
+        // Simple keyword-based responses for demo
+        const lowerMsg = userMsg.toLowerCase();
+        if (lowerMsg.includes('project') || lowerMsg.includes('work')) {
+            response = 'I have worked on several projects including an Exam Anti-Impersonation System for secure online testing, Chalo Seekhein e-learning platform, BikeNest bike rental system, and College Confessions app. Check out my projects section for more details!';
+        } else if (lowerMsg.includes('skill') || lowerMsg.includes('technology')) {
+            response = 'My skills include JavaScript, React, Node.js, Express, MongoDB, PostgreSQL, Git, Docker, AWS, C/C++, Kotlin, PHP, Laravel, and Next.js. I specialize in MERN stack development with strong backend and security focus.';
+        } else if (lowerMsg.includes('experience') || lowerMsg.includes('background')) {
+            response = 'I am a Full Stack Developer with expertise in MERN stack, focusing on secure web applications. I have experience in real-time systems, e-learning platforms, and backend development with modern technologies.';
+        } else if (lowerMsg.includes('contact') || lowerMsg.includes('hire')) {
+            response = 'Feel free to reach out through the contact form on this site! I am available for freelance work and full-time opportunities in full-stack development.';
+        } else {
+            response = 'I am Ashutosh Assistant. I can tell you about my projects, skills, experience, or technologies I work with. What would you like to know?';
+        }
+
+        appendMessage(response, 'bot');
+        chatStatus.textContent = 'You can ask another question.';
+    }, 1000); // 1 second delay to simulate thinking
+}
+
+chatForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const value = chatInput.value.trim();
+    if (!value) return;
+    getChatBotReply(value);
+    chatInput.value = '';
+});
+
+// init greeting
+appendMessage('Hello! I am Ashutosh Assistant. Ask me about projects, skills, and experience.', 'bot');
+
+}); // end DOMContentLoaded
+
 function rotateRole() {
     rotateText.textContent = roles[index];
     index = (index + 1) % roles.length;
