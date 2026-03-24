@@ -137,23 +137,27 @@ gsap.from(".footer-container", {
         toggleActions: "play none none reverse"
     }
 });
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent form submission
-    
+// Form submission handler with enhanced validation
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
     // Clear previous error messages
     clearErrors();
 
     // Get form values
-    const fullName = document.getElementById('fullName').value.trim();
+    const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
-    
+
     let isValid = true;
 
-    // Full Name validation
-    if (fullName === '') {
+    // Name validation
+    if (name === '') {
         showError('nameError', 'Full Name is required.');
+        isValid = false;
+    } else if (name.length < 2) {
+        showError('nameError', 'Name must be at least 2 characters.');
         isValid = false;
     }
 
@@ -167,98 +171,89 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
         isValid = false;
     }
 
-    // Phone number validation (should be exactly 10 digits)
-    const phonePattern = /^\d{10}$/;
-    if (phone === '') {
-        showError('phoneError', 'Phone Number is required.');
-        isValid = false;
-    } else if (!phonePattern.test(phone)) {
-        showError('phoneError', 'Phone Number must be 10 digits.');
-        isValid = false;
+    // Phone validation (optional but if provided, must be valid)
+    if (phone !== '') {
+        const phonePattern = /^\d{10}$/;
+        if (!phonePattern.test(phone)) {
+            showError('phoneError', 'Phone Number must be 10 digits.');
+            isValid = false;
+        }
     }
 
     // Message validation
     if (message === '') {
         showError('messageError', 'Please enter your message.');
         isValid = false;
-    }
-
-    // If all fields are valid, submit the form
-    if (isValid) {
-        alert('Form submitted successfully!');
-        // Here, you can perform the form submission using AJAX or traditional form submission
-        // e.g., contactForm.submit();
-    }
-});
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent form submission
-    
-    // Clear previous error messages
-    clearErrors();
-
-    // Get form values
-    const fullName = document.getElementById('fullName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const message = document.getElementById('message').value.trim();
-    
-    let isValid = true;
-
-    // Full Name validation
-    if (fullName === '') {
-        showError('nameError', 'Full Name is required.');
-        isValid = false;
-    }
-
-    // Email validation
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (email === '') {
-        showError('emailError', 'Email Address is required.');
-        isValid = false;
-    } else if (!emailPattern.test(email)) {
-        showError('emailError', 'Please enter a valid Email Address.');
-        isValid = false;
-    }
-
-    // Phone number validation (should be exactly 10 digits)
-    const phonePattern = /^\d{10}$/;
-    if (phone === '') {
-        showError('phoneError', 'Phone Number is required.');
-        isValid = false;
-    } else if (!phonePattern.test(phone)) {
-        showError('phoneError', 'Phone Number must be 10 digits.');
-        isValid = false;
-    }
-
-    // Message validation (should be more than 100 words)
-    const wordCount = message.split(/\s+/).filter(word => word.length > 0).length;
-    if (message === '') {
-        showError('messageError', 'Please enter your message.');
-        isValid = false;
-    } else if (wordCount < 100) {
-        showError('messageError', 'Your message must contain at least 100 words.');
+    } else if (message.length < 10) {
+        showError('messageError', 'Message must be at least 10 characters.');
         isValid = false;
     }
 
     // If all fields are valid, submit the form
     if (isValid) {
-        alert('Form submitted successfully!');
-        // Here, you can perform the form submission using AJAX or traditional form submission
+        // Show loading state
+        const submitBtn = document.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+        submitBtn.disabled = true;
+
+        // Form submission via Web3Forms
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                // Show the Thank You popup
+                document.getElementById('thankYouPopup').style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+                // Reset form
+                this.reset();
+
+                // Reload the page after 5 seconds
+                setTimeout(() => {
+                    location.reload();
+                }, 5000);
+            } else {
+                alert('There was an error submitting your message. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error submitting your message. Please try again.');
+        })
+        .finally(() => {
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
     }
 });
 
-// Function to show error message
-function showError(fieldId, errorMessage) {
-    const errorElement = document.getElementById(fieldId);
-    errorElement.textContent = errorMessage;
-    errorElement.style.display = 'block';
+// Close popup function
+function closePopup() {
+    document.getElementById('thankYouPopup').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+    location.reload(); // Reload the page when the popup is closed
 }
 
-// Function to clear all error messages
-function clearErrors() {
-    const errorElements = document.querySelectorAll('.error');
-    errorElements.forEach(error => error.style.display = 'none');
-}
+// Close popup when clicking outside
+document.getElementById('thankYouPopup').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closePopup();
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('thankYouPopup').style.display === 'flex') {
+        closePopup();
+    }
+});
 // Rotating text animation
 const roles = ['Full Stack Developer', 'MERN Stack Developer', 'Backend Developer'];
 let index = 0;
@@ -295,40 +290,138 @@ window.addEventListener('resize', () => {
 });
 
 
-// Form submission handler
+// Form submission handler with enhanced validation
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
-    // Form submission via Web3Forms
-    const formData = new FormData(this);
+    // Clear previous error messages
+    clearErrors();
 
-    fetch(this.action, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(result => {
-        if (result.success) {
-            // Show the Thank You popup
-            document.getElementById('thankYouPopup').style.display = 'flex';
-            
-            // Reload the page after 5 seconds
-            setTimeout(() => {
-                location.reload();
-            }, 5000); // 5 seconds delay before reload
-        } else {
-            alert('There was an error submitting your message. Please try again.');
+    // Get form values
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    let isValid = true;
+
+    // Name validation
+    if (name === '') {
+        showError('nameError', 'Full Name is required.');
+        isValid = false;
+    } else if (name.length < 2) {
+        showError('nameError', 'Name must be at least 2 characters.');
+        isValid = false;
+    }
+
+    // Email validation
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (email === '') {
+        showError('emailError', 'Email Address is required.');
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        showError('emailError', 'Please enter a valid Email Address.');
+        isValid = false;
+    }
+
+    // Phone validation (optional but if provided, must be valid)
+    if (phone !== '') {
+        const phonePattern = /^\d{10}$/;
+        if (!phonePattern.test(phone)) {
+            showError('phoneError', 'Phone Number must be 10 digits.');
+            isValid = false;
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    }
+
+    // Message validation
+    if (message === '') {
+        showError('messageError', 'Please enter your message.');
+        isValid = false;
+    } else if (message.length < 10) {
+        showError('messageError', 'Message must be at least 10 characters.');
+        isValid = false;
+    }
+
+    // If all fields are valid, submit the form
+    if (isValid) {
+        // Show loading state
+        const submitBtn = document.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+        submitBtn.disabled = true;
+
+        // Form submission via Web3Forms
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                // Show the Thank You popup
+                document.getElementById('thankYouPopup').style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+                // Reset form
+                this.reset();
+
+                // Reload the page after 5 seconds
+                setTimeout(() => {
+                    location.reload();
+                }, 5000);
+            } else {
+                alert('There was an error submitting your message. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error submitting your message. Please try again.');
+        })
+        .finally(() => {
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
+    }
 });
 
 // Close popup function
 function closePopup() {
     document.getElementById('thankYouPopup').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
     location.reload(); // Reload the page when the popup is closed
+}
+
+// Close popup when clicking outside
+document.getElementById('thankYouPopup').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closePopup();
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('thankYouPopup').style.display === 'flex') {
+        closePopup();
+    }
+});
+
+// Function to show error message
+function showError(fieldId, errorMessage) {
+    const errorElement = document.getElementById(fieldId);
+    if (errorElement) {
+        errorElement.textContent = errorMessage;
+        errorElement.style.display = 'block';
+    }
+}
+
+// Function to clear all error messages
+function clearErrors() {
+    const errorElements = document.querySelectorAll('.error');
+    errorElements.forEach(error => error.style.display = 'none');
 }
 
 // Add this to your existing JavaScript

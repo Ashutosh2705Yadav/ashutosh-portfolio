@@ -413,53 +413,179 @@
 </section>
 <!--contact form-->
 <section class="contact" id="contact">
-    <h2 class="heading">Contact <span>Me!</span></h2>
-    <div class="contactform">
-        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
-            <input type="hidden" name="access_key" value="33894473-ad86-4416-a997-c1893ff8082b">
-            
-            <!-- Name and Email Fields -->
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <span class="focus"></span>
-                </div>
-                <div class="input-field">
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <span class="focus"></span>
-                </div>
-            </div>
-
-            <!-- Phone and Subject Fields -->
-            <div class="input-box">
-                <div class="input-field">
-                    <input type="number" name="phone" placeholder="Phone Number" required maxlength="10" minlength="10">
-                    <span class="focus"></span>
-                </div>
-                <div class="input-field">
-                    <input type="text" name="subject" placeholder="Email Subject" required>
-                    <span class="focus"></span>
-                </div>
-            </div>
-
-            <!-- Message Field -->
-            <div class="textarea-field">
-                <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="btn-box btns">
-                <button type="submit" class="btn">Submit</button>
-            </div>
-        </form>
+    <div class="contact-bg">
+        <div class="contact-bg-shape"></div>
     </div>
 
-    <!-- Popup Modal -->
-    <div id="thankYouPopup" class="popup">
-        <div class="popup-content">
-            <h2>Thank You!</h2>
-            <p>Your message has been submitted successfully. We will get back to you shortly!</p>
-            <button class="btn" onclick="closePopup()">Close</button>
+    <div class="contact-wrapper">
+        <div class="contact-header">
+            <h2 class="heading">Get In <span>Touch</span></h2>
+            <p class="contact-subtitle">
+                Ready to bring your ideas to life? Let's collaborate and create something amazing together.
+                I'm always excited to work on innovative projects and discuss new opportunities.
+            </p>
+        </div>
+
+        <div class="contact-content">
+            <!-- Contact Information -->
+            <div class="contact-info-section">
+                <div class="contact-info-header">
+                    <h3>Let's Connect</h3>
+                    <p>Feel free to reach out through any of these channels</p>
+                </div>
+
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="card-icon">
+                            <i class='bx bx-envelope'></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Email Me</h4>
+                            <p>ashutosh27052003@gmail.com</p>
+                            <a href="mailto:ashutosh27052003@gmail.com" class="card-link">
+                                <span>Send Email</span>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="card-icon">
+                            <i class='bx bx-phone'></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Call Me</h4>
+                            <p>+91 9877467367</p>
+                            <a href="tel:+919877467367" class="card-link">
+                                <span>Call Now</span>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="card-icon">
+                            <i class='bx bx-map'></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Location</h4>
+                            <p>Lovely Professional University</p>
+                            <p>Punjab, India</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-section">
+                    <h4>Follow Me</h4>
+                    <div class="social-links-grid">
+                        <a href="https://github.com/Ashutosh2705Yadav" target="_blank" class="social-item">
+                            <div class="social-icon">
+                                <i class='bx bxl-github'></i>
+                            </div>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="http://www.linkedin.com/in/ashutosh-yadav27/" target="_blank" class="social-item">
+                            <div class="social-icon">
+                                <i class='bx bxl-linkedin'></i>
+                            </div>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:ashutosh27052003@gmail.com" class="social-item">
+                            <div class="social-icon">
+                                <i class='bx bx-envelope'></i>
+                            </div>
+                            <span>Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <div class="form-header">
+                    <h3>Send Message</h3>
+                    <p>Fill out the form below and I'll get back to you soon</p>
+                </div>
+
+                <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="33894473-ad86-4416-a997-c1893ff8082b">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="text" name="name" id="name" required>
+                                <label for="name">Full Name</label>
+                                <span class="input-focus"></span>
+                            </div>
+                            <span class="error" id="nameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="email" name="email" id="email" required>
+                                <label for="email">Email Address</label>
+                                <span class="input-focus"></span>
+                            </div>
+                            <span class="error" id="emailError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="tel" name="phone" id="phone" required maxlength="10" minlength="10">
+                                <label for="phone">Phone Number</label>
+                                <span class="input-focus"></span>
+                            </div>
+                            <span class="error" id="phoneError"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <input type="text" name="subject" id="subject" required>
+                                <label for="subject">Subject</label>
+                                <span class="input-focus"></span>
+                            </div>
+                            <span class="error" id="subjectError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <div class="textarea-wrapper">
+                            <textarea name="message" id="message" required></textarea>
+                            <label for="message">Your Message</label>
+                            <span class="textarea-focus"></span>
+                        </div>
+                        <span class="error" id="messageError"></span>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <div class="btn-icon">
+                                <i class='bx bx-send'></i>
+                            </div>
+                        </button>
+                        <div class="form-status" id="formStatus"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Success Modal -->
+    <div id="thankYouPopup" class="success-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class='bx bx-check-circle'></i>
+            </div>
+            <div class="modal-text">
+                <h3>Message Sent!</h3>
+                <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+            </div>
+            <button class="modal-close" onclick="closePopup()">
+                <i class='bx bx-x'></i>
+            </button>
         </div>
     </div>
 </section>
