@@ -125,6 +125,19 @@ gsap.from(".skills-column", {
     }
 });
 
+// Certificates section animation
+gsap.from(".certificate-card", {
+    opacity: 0,
+    y: 30,
+    duration: 1.0,
+    stagger: 0.2,
+    scrollTrigger: {
+        trigger: ".certificates",
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+    }
+});
+
 // Footer final animation
 gsap.from(".footer-container", {
     opacity: 0,
